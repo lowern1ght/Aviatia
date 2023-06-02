@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "8knn87SPZJaOMeYXMk+v1XadiaEXGEgZ9GPvyFHNSaQ=",
+  "Source": "Aviatia.Application",
+  "BasePath": "_content/Aviatia.Application",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Aviatia.Application\\wwwroot",
+      "Source": "Aviatia.Application",
+      "ContentRoot": "C:\\Users\\lowern1ght\\Исходники\\Aviatia\\Aviatia.Application\\wwwroot\\",
+      "BasePath": "_content/Aviatia.Application",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

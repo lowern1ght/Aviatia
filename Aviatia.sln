@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aviatia.Application", "Aviatia.Application\Aviatia.Application.csproj", "{50BF516C-3A0A-4FB6-AB24-4D558F95B463}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aviatia.Data", "Aviatia.Data\Aviatia.Data.csproj", "{F69A7E53-B0DD-4C4E-9C9D-FBE81DC941D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50BF516C-3A0A-4FB6-AB24-4D558F95B463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50BF516C-3A0A-4FB6-AB24-4D558F95B463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50BF516C-3A0A-4FB6-AB24-4D558F95B463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50BF516C-3A0A-4FB6-AB24-4D558F95B463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F69A7E53-B0DD-4C4E-9C9D-FBE81DC941D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F69A7E53-B0DD-4C4E-9C9D-FBE81DC941D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F69A7E53-B0DD-4C4E-9C9D-FBE81DC941D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F69A7E53-B0DD-4C4E-9C9D-FBE81DC941D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
