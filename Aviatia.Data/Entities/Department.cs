@@ -10,12 +10,15 @@ public class Department
     [Key]
     [Required]
     [Column("id")]
+    [JsonPropertyName("id")]
     public Int32 Id { get; set; }
     
     [Required]
     [Column("name")]
+    [JsonPropertyName("name")]
     public String? Name { get; set; }
 
+    [JsonIgnore]
     public IList<Employee> Employees { get; set; } = new List<Employee>();
 
     [JsonConstructor]

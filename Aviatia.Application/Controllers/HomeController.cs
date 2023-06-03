@@ -1,27 +1,28 @@
-using System.Text.Json;
+using Aviatia.Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Distributed;
 
 namespace Aviatia.Application.Controllers;
 
 [Controller]
-[Route("/")]
 public class HomeController : Controller
 {
-    public ILogger<HomeController> Logger { get; }
-    public IDistributedCache DistributedCache { get; }
+    public IEmployeeRepository Repository { get; }
 
-    public HomeController(IDistributedCache distributedCache, ILogger<HomeController> logger)
+    public HomeController(IEmployeeRepository repository)
     {
-        this.DistributedCache = distributedCache;
-        this.Logger = logger;
+        this.Repository = repository;
 
     }
     
     [HttpGet]
-    [Route("/")]
     public IActionResult Index()
     {
-        return Ok(JsonSerializer.Serialize(User));
+        return View();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetEmployees()
+    {
+        return Ok();
     }
 }

@@ -8,9 +8,9 @@ namespace Aviatia.Data;
 
 public class ApplicationContext
 {
-    private IConfiguration Configuration { get; set; }
-    
     private String ConnectionString { get; init; }
+ 
+    private IConfiguration Configuration { get; set; }
     
     public ApplicationContext(IConfiguration configuration)
     {

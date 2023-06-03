@@ -3,6 +3,10 @@ using Serilog.Core;
 using Aviatia.Data;
 using Aviatia.Data.Interfaces;
 using Aviatia.Data.Repository;
+using Microsoft.Extensions.Configuration.CommandLine;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.Models;
 using Serilog.Events;
 
 namespace Aviatia.Application;
@@ -13,6 +17,11 @@ public static class Application
     {
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+        if (ApplicationUtilities.NeedInitializationDb(builder.Configuration))
+        {
+            ApplicationUtilities.InitializationDbAviatia(builder.Configuration.GetConnectionString("Root"));
+        }
+        
         //DB Context
         builder.Services.AddSingleton<ApplicationContext>();
         
@@ -59,34 +68,30 @@ public static class Application
             options.InstanceName = "local";
         });
 
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new OpenApiInfo()
+            {
+                Version = "0.2a",
+                Title = "Aviatia OpenAPI",
+                Description = "Aviatia Service API",
+                Contact = new OpenApiContact()
+                {
+                  Name = "Alexander Sergeev",
+                  Email  = "lowern1ght@yahoo.com",
+                  Url = new Uri(@"https://github.com/lowern1ght")
+                },
+                License = new OpenApiLicense()
+                {
+                    Name = "MIT License",
+                }
+            });
+        });
 
         //Application
         WebApplication application = builder.Build();
 
         application.UseSession();
-        
-        application.UseRouting();
-        
-        application.UseCors(policyBuilder =>
-        {
-            policyBuilder.AllowAnyOrigin();
-        });
-        
-        application.UseEndpoints(routeBuilder =>
-        {
-            routeBuilder.MapControllerRoute("default", "{controller=Home}/{action}/{id?}");
-        });
-        
-        application.UseSwagger(options =>
-        {
-            options.RouteTemplate = "swagger/{document}/swagger.json";
-        });
-
-        application.UseSwaggerUI(options =>
-        {
-            options.SwaggerEndpoint("/swagger/v1/index.html", "aviatia/v1");
-        });
 
         if (!application.Environment.IsDevelopment())
         {
@@ -94,6 +99,31 @@ public static class Application
             
             application.UseHsts();
         }
+        else
+        {
+            application.UseDeveloperExceptionPage();
+        }
+        
+        application.UseCors(policyBuilder =>
+        {
+            policyBuilder.AllowAnyOrigin();
+        });
+        
+        application.UseStaticFiles();
+        
+        application.UseRouting();
+        
+        application.UseSwagger();
+
+        application.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "aviatia/v1");
+        });
+        
+        application.UseEndpoints(routeBuilder =>
+        {
+            routeBuilder.MapControllerRoute("default", "{controller=Home}/{action}/{id?}");
+        });
 
         application.Run();
     }
