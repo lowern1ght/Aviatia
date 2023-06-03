@@ -1,10 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "JxT2JIF6tQAWwN5AcFRDAfEZyysccjoYQ5HTE6XNkBdiEo9l2PI9+vEzgnIGAwHIQm7j8+9DRYtGzy/exqVMJw==",
+  "dgSpecHash": "vl8Xq9xrvz9DC3LJmgI3uDAkJVwR1i+G709NRUpTMXN4ikQmW4jUT9UHCi6XJqSA/TYvVVz1zLsfQ9IWRHy+CA==",
   "success": true,
   "projectFilePath": "C:\\Users\\lowern1ght\\Исходники\\Aviatia\\Aviatia.Data\\Aviatia.Data.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\lowern1ght\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512"
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\7.0.0\\microsoft.extensions.configuration.fileextensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\microsoft.extensions.configuration.ini\\7.0.0\\microsoft.extensions.configuration.ini.7.0.0.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\7.0.0\\microsoft.extensions.fileproviders.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\7.0.0\\microsoft.extensions.fileproviders.physical.7.0.0.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\7.0.0\\microsoft.extensions.filesystemglobbing.7.0.0.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\lowern1ght\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512"
   ],
   "logs": []
 }

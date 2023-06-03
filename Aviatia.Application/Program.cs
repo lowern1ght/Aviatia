@@ -1,10 +1,11 @@
 using Serilog;
 using Serilog.Core;
+using Aviatia.Data;
+using Aviatia.Data.Interfaces;
+using Aviatia.Data.Repository;
 using Serilog.Events;
 
 namespace Aviatia.Application;
-
-using StackExchange.Redis;
 
 public static class Application
 {
@@ -12,6 +13,13 @@ public static class Application
     {
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+        //DB Context
+        builder.Services.AddSingleton<ApplicationContext>();
+        
+        builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        
+        builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+        
         //Logging
         builder.Logging.ClearProviders();
 
