@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aviatia.Web", "Aviatia.Web\Aviatia.Web.csproj", "{30BB7925-EF40-497B-ACD8-CA19FBAF97AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationService", "src\services\LocationService\LocationService.csproj", "{87AB5631-B241-449A-BA07-A21309775CD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "src\shared\Extensions\Extensions.csproj", "{D15DB081-77CA-416B-8835-9D946B1FE614}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{30BB7925-EF40-497B-ACD8-CA19FBAF97AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30BB7925-EF40-497B-ACD8-CA19FBAF97AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30BB7925-EF40-497B-ACD8-CA19FBAF97AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30BB7925-EF40-497B-ACD8-CA19FBAF97AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87AB5631-B241-449A-BA07-A21309775CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87AB5631-B241-449A-BA07-A21309775CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87AB5631-B241-449A-BA07-A21309775CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87AB5631-B241-449A-BA07-A21309775CD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D15DB081-77CA-416B-8835-9D946B1FE614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15DB081-77CA-416B-8835-9D946B1FE614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15DB081-77CA-416B-8835-9D946B1FE614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15DB081-77CA-416B-8835-9D946B1FE614}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

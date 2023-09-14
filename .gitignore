@@ -1,2 +1,7 @@
 ﻿# Project exclude paths
-/Aviatia.Web/node_modules/
+.bin
+bin
+obj
+.idea
+.vs
+.vscode
