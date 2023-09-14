@@ -3,12 +3,35 @@
 version: '3.4'
 
 services:
+  dblocation:
+    image: postgres:latest
+    ports:
+      - 5001:5432
+    restart: always
+    environment:
+      - POSTGRES_DB=locationdb
+      - POSTGRES_USER=location_admin
+      - POSTGRES_PASSWORD=jnxtnysq
+    volumes:
+      - locationdb-data:/var/lib/postgresql/data
   locationservice:
     image: locationservice
     restart: always
     build:
       context: .
       dockerfile: src/services/LocationService/Dockerfile
+    depends_on:
+      - dblocation
     ports:
-      - 6001:6001
       - 7001:7001
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:7001
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U location_admin -d locationdb"]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+volumes:
+  locationdb-data:
