@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationService", "src\serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "src\shared\Extensions\Extensions.csproj", "{D15DB081-77CA-416B-8835-9D946B1FE614}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\shared\Domain\Domain.csproj", "{F7CC5F5A-6451-4833-A927-323AF90248EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "src\services\ApiGateway\ApiGateway.csproj", "{D662048B-7284-4E25-A6DB-6A68200E83D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{D15DB081-77CA-416B-8835-9D946B1FE614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D15DB081-77CA-416B-8835-9D946B1FE614}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D15DB081-77CA-416B-8835-9D946B1FE614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7CC5F5A-6451-4833-A927-323AF90248EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7CC5F5A-6451-4833-A927-323AF90248EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7CC5F5A-6451-4833-A927-323AF90248EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7CC5F5A-6451-4833-A927-323AF90248EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D662048B-7284-4E25-A6DB-6A68200E83D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D662048B-7284-4E25-A6DB-6A68200E83D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D662048B-7284-4E25-A6DB-6A68200E83D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D662048B-7284-4E25-A6DB-6A68200E83D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
