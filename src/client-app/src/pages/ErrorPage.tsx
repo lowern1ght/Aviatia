@@ -17,7 +17,7 @@ export const ErrorPage = () => {
                 status="error"
                 title="Page not found"
                 subTitle="Please check the path to the content"
-                style={{ flex: 'auto' }}
+                style={{flex: 'auto'}}
                 extra={[
                     <Link to={"/"}>
                         <Button type="primary" key="console">

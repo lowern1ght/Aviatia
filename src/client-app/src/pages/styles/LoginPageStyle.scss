@@ -1,0 +1,18 @@
+._main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+._form {
+  ._form-item {
+    padding: 20px;
+    text-align: left;
+  }
+}
+
+._input-icon {
+  opacity: 0.25;
+}
