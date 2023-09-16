@@ -1,9 +1,26 @@
 import {ErrorPage} from "./pages/ErrorPage";
-import {LoginPage} from "./pages/LoginPage";
+import {LoginPage, ILoginPageProp} from "./pages/LoginPage";
 
 import {createBrowserRouter} from "react-router-dom";
+import {titleCase} from "./utilities";
 
-export const router = createBrowserRouter([
+const emailText : string = 'email'
+const passwordText : string = 'password'
+
+const LoginPageProps : ILoginPageProp = {
+    email : {
+        type: emailText,
+        title: titleCase(emailText),
+        placeholder: titleCase(emailText)
+    },
+    password: {
+        type: passwordText,
+        title: titleCase(passwordText),
+        placeholder: titleCase(passwordText),
+    }
+}
+
+const BrowserRouter = createBrowserRouter([
     {
         path: '/',
         element: <></>,
@@ -11,6 +28,8 @@ export const router = createBrowserRouter([
     },
     {
         path: '/login',
-        element: <LoginPage/>
+        element: <LoginPage {...LoginPageProps}/>
     }
 ])
+
+export { BrowserRouter, LoginPageProps }
