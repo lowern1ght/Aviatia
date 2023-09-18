@@ -1,16 +1,22 @@
 using System.Globalization;
 using AuthorizationService.Database;
+using AuthorizationService.Migrations.Services;
+using AuthorizationService.Models.Authorization;
+using AuthorizationService.Models.Identity;
+using AuthorizationService.Validation;
 using Extensions.Configurations;
 using Extensions.Configurations.Models;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Logging.ClearProviders()
-    .AddSerilog();
+builder.Logging.AddConsoleSerilog(builder.Environment.IsDevelopment() 
+    ? LogEventLevel.Debug 
+    : LogEventLevel.Warning);
 
 builder.Configuration.AddJsonFile(builder.Environment.IsDevelopment()
     ? "dbcontext.Development.json"
@@ -20,9 +26,14 @@ var authorizationString = builder.Configuration.GetConnectionString<Authorizatio
 
 builder.Services.AddSingleton(new ConnectionString<AuthorizationDbContext>(authorizationString));
 
-builder.Services.AddDbContext<AuthorizationDbContext>(optionsBuilder 
+//Migration
+builder.Services.AddScoped<IMigrationService, MigrationService>();
+
+//Identity with DbContext
+builder.Services.AddDbContext<AuthorizationDbContext>(optionsBuilder
     => optionsBuilder.UseSnakeCaseNamingConvention(CultureInfo.InvariantCulture)
-        .UseNpgsql(authorizationString));
+        .UseNpgsql(authorizationString)
+        .UseOpenIddict());
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -31,8 +42,27 @@ builder.Services
         options.Cookie.Name = "av.ck";
     });
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services
+    .AddIdentity<Employee, IdentityRole>()
     .AddEntityFrameworkStores<AuthorizationDbContext>();
+
+builder.Services.AddOpenIddict()
+    .AddServer(serverBuilder =>
+    {
+        serverBuilder.SetTokenEndpointUris("api/token");
+    });
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Lockout.AllowedForNewUsers = true;
+    options.Lockout.MaxFailedAccessAttempts = 4;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+});
+
+//Other services
+builder.Services.AddRouting(options 
+        => options.LowercaseUrls = true)
+    .AddControllers();
 
 builder.Services.AddAntiforgery(options 
     => options.Cookie.Name = "av.af" );
@@ -44,6 +74,9 @@ if (builder.Environment.IsDevelopment())
         .AddSwaggerGen();
 }
 
+//Validators
+builder.Services.AddScoped<AbstractValidator<UserDto>, UserDtoValidator>();
+
 var application = builder.Build();
 
 if (application.Environment.IsDevelopment())
@@ -52,6 +85,9 @@ if (application.Environment.IsDevelopment())
     application.UseSwaggerUI();
 }
 
+application.UseRouting();
+
+application.UseAuthentication();
 application.UseAuthorization();
 
 application.MapControllers();
