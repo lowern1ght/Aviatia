@@ -1,6 +1,14 @@
 version: '3.4'
 
 services:
+  apigateway:
+    image: aviatia/apigateway
+    build:
+      context: .
+      dockerfile: ./src/services/ApiGateway/Dockerfile
+    ports:
+      - 12000:80
+      - 12001:443
   dblocation:
     image: postgres:latest
     ports:

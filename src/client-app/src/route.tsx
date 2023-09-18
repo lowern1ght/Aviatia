@@ -28,7 +28,7 @@ const BrowserRouter = createBrowserRouter([
     },
     {
         path: '/login',
-        element: <LoginPage {...LoginPageProps}/>
+        element: <LoginPage /*{...LoginPageProps}*//>
     }
 ])
 

@@ -1,6 +1,22 @@
+using Ocelot.Middleware;
+using Ocelot.Cache.CacheManager;
+using Ocelot.DependencyInjection;
+
+string ocelotFileName = "ocelot.json";
+
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+builder.Services.AddOcelot()
+    .AddCacheManager(part => part.WithDictionaryHandle());
 
-app.Run();
+builder.Configuration.AddJsonFile(ocelotFileName)
+    .AddEnvironmentVariables();
+
+var application = builder.Build();
+
+await application.UseOcelot()
+    .WaitAsync(TimeSpan.Zero);
+
+application.MapGet("/", () => $"{application.Configuration.GetValue<string>("ApplicationName") ?? "Aviatia"} " +
+                              $"is working");
+application.Run();

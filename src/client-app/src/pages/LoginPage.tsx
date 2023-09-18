@@ -1,5 +1,4 @@
-import {Col, Form, Input, Row} from "antd";
-import FormItem from "antd/es/form/FormItem";
+import {/*Button,*/ Form, /*FormRule, Input*/} from "antd";
 
 import "./styles/LoginPageStyle.css"
 import {IInput} from "../interfaces/IInput";
@@ -9,37 +8,35 @@ export interface ILoginPageProp {
     readonly password: IInput,
 }
 
-const InputForm = (input : IInput, ) => {
+/*const InputFormComponent = (input : IInput) => {
     return (
         <div className='_form-item'>
             <p>{input.title}</p>
             <Input
+                size={'middle'}
                 type={input.type}
                 placeholder={input.placeholder}
             />
         </div>
     )
-}
+}*/
 
-export const LoginPage = ({ email, password }: ILoginPageProp) => {
+/*const ruleRequire : FormRule = {
+    type: 'string',
+    required: true,
+}*/
+
+export const LoginPage = (/*{email, password}: ILoginPageProp*/) => {
+
+    const submitHandler = () => {
+
+    }
+
     return (
         <div className="_main">
-            <Row
-                align={'middle'}
-                style={{justifyContent: 'center'}}
-            >
-                <Col>
-                    <Form className="_form">
-                        <FormItem>
-                            <InputForm {...email}/>
-                        </FormItem>
+            <Form className="_form" onFinish={submitHandler}>
 
-                        <FormItem>
-                            <InputForm {...password}/>
-                        </FormItem>
-                    </Form>
-                </Col>
-            </Row>
+            </Form>
         </div>
     )
 }
