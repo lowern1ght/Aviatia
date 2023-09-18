@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile(builder.Environment.IsDevelopment()
-    ? "dbcontexts.Development.json"
-    : "dbcontexts.json");
+    ? "dbcontext.Development.json"
+    : "dbcontext.json");
 
 var authorizationString = builder.Configuration.GetConnectionString<AuthorizationDbContext>();
 
