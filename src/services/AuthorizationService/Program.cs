@@ -1,5 +1,6 @@
 using System.Globalization;
 using AuthorizationService.Database;
+using AuthorizationService.Models.Identity;
 using Extensions.Configurations;
 using Extensions.Configurations.Models;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,7 @@ builder.Services
         options.Cookie.Name = "av.ck";
     });
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<Employee, IdentityRole>()
     .AddEntityFrameworkStores<AuthorizationDbContext>();
 
 builder.Services.AddAntiforgery(options 

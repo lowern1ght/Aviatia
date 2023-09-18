@@ -1,8 +1,12 @@
 ﻿using AuthorizationService.Database;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Validations.Rules;
 
 namespace AuthorizationService.Controllers.Api;
 
+[Authorize]
+[OpenApiRule]
 [ApiController]
 [Route("api/[controller]")]
 public class EmployeesController : Controller
@@ -20,6 +24,6 @@ public class EmployeesController : Controller
     [HttpGet]
     public Task<ActionResult> GetAsync()
     {
-        return Task.FromResult<ActionResult>(Ok(_authorizationDbContext.Database.ProviderName));
+        return Task.FromResult<ActionResult>(Ok(_authorizationDbContext.Users));
     }
 }
