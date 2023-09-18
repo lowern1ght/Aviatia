@@ -1,0 +1,9 @@
+﻿{
+  "AuthorizationDbContext": {
+    "Host": "localhost",
+    "Port": 5432,
+    "Database": "authdb",
+    "Username": "postgres",
+    "Password": ",frfkjdf"
+  }
+}

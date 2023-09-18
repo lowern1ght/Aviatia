@@ -1,24 +1,28 @@
 using AuthorizationService.Database;
 using Extensions.Configurations;
 using Extensions.Configurations.Models;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Identity.Web;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+builder.Configuration.AddJsonFile(builder.Environment.IsDevelopment()
+    ? "dbcontexts.Development.json"
+    : "dbcontexts.json");
+
+var authorizationString = builder.Configuration.GetConnectionString<AuthorizationDbContext>();
+
+builder.Services.AddSingleton(new ConnectionString<AuthorizationDbContext>(authorizationString));
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.Cookie.Name = "av.ck";
     });
 
-builder.Configuration.AddJsonFile("dbcontexts.json");
-
-var authorizationString = builder.Configuration.GetConnectionString<AuthorizationDbContext>();
-
-builder.Services.AddSingleton(new ConnectionString<AuthorizationDbContext>(authorizationString));
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<AuthorizationDbContext>();
 
 builder.Services.AddAntiforgery(options 
     => options.Cookie.Name = "av.af" );
