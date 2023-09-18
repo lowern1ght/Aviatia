@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /location-service
-EXPOSE 7001
+EXPOSE 80
 
-ENV ASPNETCORE_URLS=http://+:7001
+ENV ASPNETCORE_URLS=http://+:80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG configuration=Release

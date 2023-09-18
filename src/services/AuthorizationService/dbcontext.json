@@ -1,6 +1,6 @@
 ﻿{
   "AuthorizationDbContext": {
-    "Host": "authdb",
+    "Host": "dbauthorization",
     "Port": 5432,
     "Database": "authdb",
     "Username": "postgres",

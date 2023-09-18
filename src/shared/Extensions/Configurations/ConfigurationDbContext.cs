@@ -27,8 +27,15 @@ public static class ConfigurationDbContext
         {
             return connectionString.Value;
         }
+        
+        var sectionName = typeof(TDbContext).FullName?
+            .Split('.')
+            .Last();
 
-        var dbContextProperty = configuration.GetSection(nameof(TDbContext))
+        if (sectionName is null)
+            throw new ArgumentNullException(nameof(sectionName));
+        
+        var dbContextProperty = configuration.GetSection(sectionName)
             .Get<DbContextProperty>() ?? throw new InvalidOperationException( nameof(DbContextProperty) + " failed parse");
 
         return Mapper.Map<NpgsqlConnectionStringBuilder>(dbContextProperty)

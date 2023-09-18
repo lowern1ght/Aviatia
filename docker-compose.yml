@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+#ApiGateway
   apigateway:
     image: aviatia/apigateway
     build:
@@ -9,6 +10,40 @@ services:
     ports:
       - 12000:80
       - 12001:443
+#Render
+  clientapp:
+    image: aviatia/render
+    build: 
+      context: src/client-app/
+      dockerfile: ./Dockerfile
+    environment:
+      - NODE_ENV=production
+    ports:
+      - 4000:80
+#Services
+  locationservice:
+    image: locationservice
+    restart: always
+    build:
+      context: .
+      dockerfile: src/services/LocationService/Dockerfile
+    depends_on:
+      - dblocation
+    ports:
+      - 7001:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+  authorizationservice:
+    build:
+      context: .
+      dockerfile: src/services/AuthorizationService/Dockerfile
+    ports:
+      - 7002:80
+    depends_on:
+      - dbauthorization
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+#InternalApp
   dblocation:
     image: postgres:latest
     ports:
@@ -26,27 +61,23 @@ services:
       timeout: 10s
       retries: 5
       start_period: 30s
-  locationservice:
-    image: locationservice
+  dbauthorization:
+    image: postgres:latest
+    ports:
+      - 5002:5432
     restart: always
-    build:
-      context: .
-      dockerfile: src/services/LocationService/Dockerfile
-    depends_on:
-      - dblocation
-    ports:
-      - 7001:7001
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:7001
-  clientapp:
-    image: aviatia/render
-    build: 
-      context: src/client-app/
-      dockerfile: ./Dockerfile
-    environment:
-      - NODE_ENV=production
-    ports:
-      - 4000:80
+      - POSTGRES_DB=authdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=,frfkjdf
+    volumes:
+      - authorization:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d authdb"]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
 volumes:
   locationdb-data:
+  authorization-data:

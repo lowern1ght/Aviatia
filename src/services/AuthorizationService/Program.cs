@@ -1,10 +1,16 @@
+using System.Globalization;
 using AuthorizationService.Database;
 using Extensions.Configurations;
 using Extensions.Configurations.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders()
+    .AddSerilog();
 
 builder.Configuration.AddJsonFile(builder.Environment.IsDevelopment()
     ? "dbcontext.Development.json"
@@ -13,6 +19,10 @@ builder.Configuration.AddJsonFile(builder.Environment.IsDevelopment()
 var authorizationString = builder.Configuration.GetConnectionString<AuthorizationDbContext>();
 
 builder.Services.AddSingleton(new ConnectionString<AuthorizationDbContext>(authorizationString));
+
+builder.Services.AddDbContext<AuthorizationDbContext>(optionsBuilder 
+    => optionsBuilder.UseSnakeCaseNamingConvention(CultureInfo.InvariantCulture)
+        .UseNpgsql(authorizationString));
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -34,18 +44,16 @@ if (builder.Environment.IsDevelopment())
         .AddSwaggerGen();
 }
 
-var app = builder.Build();
+var application = builder.Build();
 
-if (app.Environment.IsDevelopment())
+if (application.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    application.UseSwagger();
+    application.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+application.UseAuthorization();
 
-app.UseAuthorization();
+application.MapControllers();
 
-app.MapControllers();
-
-app.Run();
+application.Run();

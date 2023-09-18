@@ -3,7 +3,7 @@ using Serilog.Core;
 using Serilog.Events;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Extensions;
+namespace Extensions.Configurations;
 
 public static class ConfigurationLogger
 {

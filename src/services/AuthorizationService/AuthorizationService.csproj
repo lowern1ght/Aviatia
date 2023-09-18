@@ -9,11 +9,17 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="EFCore.NamingConventions" Version="7.0.2" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.Identity.Web" Version="1.16.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
@@ -21,10 +27,12 @@
       <Content Include="..\..\..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+      <Content Update="dbcontext.Development.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
       <Folder Include="Models" />
     </ItemGroup>
 

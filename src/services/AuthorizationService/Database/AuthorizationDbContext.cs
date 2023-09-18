@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AuthorizationService.Database;
 
-public class AuthorizationDbContext : IdentityDbContext
+public sealed class AuthorizationDbContext : IdentityDbContext
 {
     public AuthorizationDbContext(DbContextOptions<AuthorizationDbContext> dbContextOptions)
-        : base(dbContextOptions) { }
+        : base(dbContextOptions)
+    { }
 }
