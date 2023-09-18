@@ -1,4 +1,10 @@
 ﻿{
-  "Routes": [],
-  "GlobalConfiguration": {}
+  "Routes": [
+    {
+      "ServiceName": "locationservice"
+    }
+  ],
+  "GlobalConfiguration": {
+    
+  }
 }

@@ -5,14 +5,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Extensions;
 
-public static class Configuration
+public static class ConfigurationLogger
 {
     public static IServiceCollection AddDebugSerilog(this IServiceCollection serviceCollection)
     {
         return serviceCollection
             .AddSerilog(CreateLogger(LogEventLevel.Debug));
     }
-    
+
     public static IServiceCollection AddWarningSerilog(this IServiceCollection serviceCollection)
     {
         return serviceCollection

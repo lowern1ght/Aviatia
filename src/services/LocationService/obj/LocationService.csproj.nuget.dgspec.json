@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\LocationService.csproj": {}
+    "c:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\LocationService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\LocationService.csproj": {
+    "c:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\LocationService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\LocationService.csproj",
+        "projectUniqueName": "c:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\LocationService.csproj",
         "projectName": "LocationService",
-        "projectPath": "C:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\LocationService.csproj",
+        "projectPath": "c:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\LocationService.csproj",
         "packagesPath": "C:\\Users\\lowern1ght\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\obj\\",
+        "outputPath": "c:\\Users\\lowern1ght\\Source\\Aviatia\\src\\services\\LocationService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lowern1ght\\AppData\\Roaming\\NuGet\\NuGet.Config"

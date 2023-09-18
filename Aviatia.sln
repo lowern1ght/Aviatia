@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\shared\Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "src\services\ApiGateway\ApiGateway.csproj", "{D662048B-7284-4E25-A6DB-6A68200E83D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthorizationService", "src\services\AuthorizationService\AuthorizationService.csproj", "{3CC9AA92-80C9-40A4-9769-C31D81A4BB42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{D662048B-7284-4E25-A6DB-6A68200E83D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D662048B-7284-4E25-A6DB-6A68200E83D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D662048B-7284-4E25-A6DB-6A68200E83D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CC9AA92-80C9-40A4-9769-C31D81A4BB42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CC9AA92-80C9-40A4-9769-C31D81A4BB42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CC9AA92-80C9-40A4-9769-C31D81A4BB42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CC9AA92-80C9-40A4-9769-C31D81A4BB42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
